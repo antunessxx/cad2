@@ -2,8 +2,8 @@
 // app.js
 const express = require('express');
 const dotenv = require('dotenv');
-const userRoutes = require('./routes/userRoutes');
-const authenticateToken = require('./middlewares/authMiddleware');
+const userRoutes = require('./src/routes/userRoutes');
+const authenticateToken = require('./src/middlewares/authMiddleware.js');
 const path = require('path');
 
 dotenv.config();
