@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Cadastre-se</h1>
-        <form action="/api/signup" method="POST">
+        <form id="signupForm">
             <label for="username">Nome de Usuário:</label>
             <input type="text" id="username" name="username" required>
             
@@ -21,7 +21,38 @@
             
             <button type="submit">Cadastrar</button>
         </form>
+        <p id="signupMessage"></p>
         <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
     </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+
+                const result = await response.json();
+                document.getElementById('signupMessage').textContent = result.message;
+
+                if (response.ok) {
+                    // Salvar o token e redirecionar para a página de listagem ou outra página
+                    localStorage.setItem('token', result.token);
+                    window.location.href = '/users.html';
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                document.getElementById('signupMessage').textContent = 'Erro no cadastro.';
+            }
+        });
+    </script>
 </body>
 </html>
