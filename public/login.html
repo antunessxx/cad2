@@ -40,9 +40,9 @@
             document.getElementById('loginMessage').textContent = result.message;
       
             if (response.ok) {
-              // Salva o token no armazenamento local
+              
               localStorage.setItem('token', result.token);
-              // Redireciona para a página de listagem de usuários
+              
               window.location.href = '/users.html';
             }
           } catch (error) {
