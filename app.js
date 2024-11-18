@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Usar rotas de usuário
+
 app.use('/api', userRoutes);
 
 app.use((req, res, next) => {
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Servir páginas de cadastro e login
+
 app.get('/cadastro', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'cadastro.html'));
 });
@@ -32,7 +32,7 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// Servir página de listagem de usuários
+
 app.get('/users', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'users.html'));
 });
