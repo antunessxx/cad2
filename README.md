@@ -1,2 +1,2 @@
 teste usando
-http://localhost:3000/cadastro
+http://localhost:3000/cadastro no chrome
